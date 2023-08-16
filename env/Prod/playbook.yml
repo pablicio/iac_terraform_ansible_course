@@ -10,14 +10,22 @@
   - name: Instalando dependências com pip (Django e Django Rest)
     pip:
       virtualenv: /home/ubuntu/tcc/venv
-      name:
-        - django
-        - djangorestframework
-  - name: Iniciando Projeto
-    shell: '. /home/ubuntu/tcc/venv/bin/activate; django-admin startproject setup /home/ubuntu/tcc'
+      requirements: /home/ubuntu/tcc/project/requirements.txt
+  - name: Git Clone
+    ansible.builtin.git:
+      repo: https://github.com/alura-cursos/clientes-leo-api.git
+      dest: /home/ubuntu/tcc/project
+      version: master
+      force: yes
   - name: Alterando o hosts do settings
     lineinfile:
-      path: /home/ubuntu/tcc/setup/settings.py
+      path: /home/ubuntu/tcc/project/setup/settings.py
       regexp: 'ALLOWED_HOSTS'
       line: 'ALLOWED_HOSTS = ["*"]'
       backrefs: yes
+  - name: configurando o banco de dados
+    shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/project/manage.py migrate'
+  - name: carregando dados iniciais
+    shell: '. /home/ubuntu/tcc/venv/bin/activate; python /home/ubuntu/tcc/project/manage.py loaddata  clientes.json'
+  - name: Subindo o servidor
+    shell: '. /home/ubuntu/tcc/venv/bin/activate; nohup python /home/ubuntu/tcc/project/manage.py runserver 0.0.0.0:8000 &'
