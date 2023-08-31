@@ -9,7 +9,7 @@
           </div>
 
           <DxTreeView id="treeView" :data-source="items" display-expr="name" item-template="product-template"
-            :search-enabled="true" search-mode="contains" selectionMode="single" :select-by-click="true"
+            :search-enabled="true" search-mode="contains" selectionMode="single" :select-by-click="false"
             @item-click="selectProduct">
 
             <template #product-template="product">
@@ -43,9 +43,14 @@ export default {
     }
   },
   mounted() {
+
+
     fetch("http://localhost:8080/map_folder.json")
       .then(response => response.json())
-      .then(data => (this.items = data));
+      .then(data => {
+        this.items = data
+        this.getMarkdowFile(data[0])
+      });
   },
   methods: {
     selectProduct(e) {
@@ -107,7 +112,6 @@ export default {
 .logo img {
   width: 203px;
   margin-left: 47px;
-
 }
 
 .container {
@@ -116,7 +120,15 @@ export default {
 }
 
 /* Serve pra delimitar a altura das imagens que tiverem o alt descrito */
-img[alt="smiley"] {
-  max-height: 500px;
+img[alt="small"] {
+  max-height: 260px;
+}
+
+img[alt="medium"] {
+  max-height: 460px;
+}
+
+img[alt="large"] {
+  max-height: 660px;
 }
 </style>

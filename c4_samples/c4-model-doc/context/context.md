@@ -1,5 +1,4 @@
-# YArCH
-> Para atualizar essa doc basta seguir os passos abaixo.
 
 ## Context
-```
+
+![large](http://localhost:8080/c4-model-doc/context/diagram1.png)

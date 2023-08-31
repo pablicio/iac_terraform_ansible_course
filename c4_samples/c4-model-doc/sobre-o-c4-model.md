@@ -3,4 +3,4 @@ O modelo C4 consiste em um conjunto hierárquico de diagramas de arquitetura de 
 
 ### Exemplo
 
-![smiley](http://localhost:8080/c4-model-doc/code/CMS1.png)
+![small](http://localhost:8080/c4-model-doc/code/CMS1.png)

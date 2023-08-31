@@ -8,11 +8,9 @@
       {
         "path": "/c4-model-doc/code",
         "files": [
-          "CMS1.png",
-          "CMS2.png",
           "code.md",
-          "test_1.puml",
-          "test_2.puml"
+          "diagram1.png",
+          "diagram1.puml"
         ],
         "items": [],
         "name": "Code",
@@ -21,24 +19,20 @@
       {
         "path": "/c4-model-doc/component",
         "files": [
-          "CMS1.png",
-          "CMS2.png",
-          "content.md",
-          "test_1.puml",
-          "test_2.puml"
+          "component.md",
+          "diagram1.png",
+          "diagram1.puml"
         ],
         "items": [],
-        "name": "Content",
-        "md_slug": "content.md"
+        "name": "Component",
+        "md_slug": "component.md"
       },
       {
         "path": "/c4-model-doc/container",
         "files": [
-          "CMS1.png",
-          "CMS2.png",
           "container.md",
-          "test_1.puml",
-          "test_2.puml"
+          "diagram1.png",
+          "diagram1.puml"
         ],
         "items": [],
         "name": "Container",
@@ -47,11 +41,9 @@
       {
         "path": "/c4-model-doc/context",
         "files": [
-          "CMS1.png",
-          "CMS2.png",
           "context.md",
-          "test_1.puml",
-          "test_2.puml"
+          "diagram1.png",
+          "diagram1.puml"
         ],
         "items": [],
         "name": "Context",

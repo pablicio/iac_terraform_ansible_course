@@ -1,4 +1,6 @@
-# YArCH
-> Para atualizar essa doc basta seguir os passos abaixo.
+
 
 ## Code
+> Exemplo de diagrama C4 com o build
+
+![large](http://localhost:8080/c4-model-doc/code/diagram1.png)
