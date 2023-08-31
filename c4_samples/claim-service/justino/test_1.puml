@@ -1,4 +1,4 @@
-@startuml test_2
+@startuml test_1
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
 !define FA5 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
@@ -7,7 +7,6 @@
 !include DEVICONS/python.puml
 !include DEVICONS/aws.puml
 !include FA5/mobile_alt.puml
-
 
 title Diagrama de contêineres do Sistema de Gerenciamento de Conteúdo
 
