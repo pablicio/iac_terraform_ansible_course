@@ -3,9 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="col-4">
+
           <div class="logo">
             <img src="https://segurolight.com.br/LogoParceiras/logo-youse.png" alt="FCC Logo" />
           </div>
+
           <DxTreeView id="treeView" :data-source="products" display-expr="name" item-template="product-template"
             :search-enabled="true" search-mode="contains" selectionMode="single" :select-by-click="true"
             @item-selection-changed="selectProduct">
@@ -14,16 +16,14 @@
               {{ product.data.name }}
             </template>
           </DxTreeView>
-
         </div>
+        
         <div class="col-8">
-          <!-- <div id="content"></div> -->
+          <div id="content"></div>
 
           <div id="product-details" v-if="currentProduct">
             <div class="price">{{ currentProduct.name }}</div>
             <img :src="'http://localhost:8080' + currentProduct.path">
-            
-
           </div>
         </div>
       </div>
@@ -35,7 +35,6 @@
 import DxTreeView from 'devextreme-vue/tree-view';
 var MarkdownIt = require('markdown-it'),
   md = new MarkdownIt();
-
 
 export default {
   components: {
@@ -90,8 +89,6 @@ export default {
 
 #product-details>img {
   border: none;
-  /* height: 500px; */
-
 }
 
 #product-details>.name {
@@ -112,7 +109,7 @@ export default {
   width: 203px;
 }
 
-.container{
+.container {
   margin-top: 6px;
   margin-left: 4px;
 }
