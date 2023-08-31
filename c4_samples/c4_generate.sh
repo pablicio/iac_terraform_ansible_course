@@ -7,5 +7,4 @@ done
 
 ## generate current folder structure and save in json
 `rm map_folder.json 2> /dev/null`;
-# `tree --dirsfirst --noreport -J -f | awk '!/jar|json|sh|py/' >> map_folder.json`;
-`python3 map_formatter.py >> map_folder.json`; 
+`python3 map_formatter.py >> map_folder.json`;

@@ -8,23 +8,18 @@
             <img src="https://segurolight.com.br/LogoParceiras/logo-youse.png" alt="FCC Logo" />
           </div>
 
-          <DxTreeView id="treeView" :data-source="products" display-expr="name" item-template="product-template"
+          <DxTreeView id="treeView" :data-source="items" display-expr="name" item-template="product-template"
             :search-enabled="true" search-mode="contains" selectionMode="single" :select-by-click="true"
-            @item-selection-changed="selectProduct">
+            @item-click="selectProduct">
 
             <template #product-template="product">
               {{ product.data.name }}
             </template>
           </DxTreeView>
         </div>
-        
+
         <div class="col-8">
           <div id="content"></div>
-
-          <div id="product-details" v-if="currentProduct">
-            <div class="price">{{ currentProduct.name }}</div>
-            <img :src="'http://localhost:8080' + currentProduct.path">
-          </div>
         </div>
       </div>
     </div>
@@ -42,25 +37,27 @@ export default {
   },
   data() {
     return {
-      products: {},
-      currentProduct: this.products,
+      items: {},
+      currentItem: this.items,
       mdContent: ''
     }
   },
   mounted() {
     fetch("http://localhost:8080/map_folder.json")
       .then(response => response.json())
-      .then(data => (this.products = data));
-
-    fetch("http://localhost:8080/home.md")
-      .then(response => response.text())
-      .then((mdText) => {
-        document.getElementById("content").innerHTML = md.render(mdText);
-      })
+      .then(data => (this.items = data));
   },
   methods: {
     selectProduct(e) {
-      this.currentProduct = e.itemData;
+      this.currentItem = e.itemData;
+      this.getMarkdowFile(this.currentItem)
+    },
+    getMarkdowFile(currentItem) {
+      fetch(`http://localhost:8080${currentItem.path}/${currentItem.md_slug}`)
+        .then(response => response.text())
+        .then((mdText) => {
+          document.getElementById("content").innerHTML = md.render(mdText);
+        })
     }
   }
 }
@@ -103,14 +100,23 @@ export default {
 
 .logo {
   height: 60px;
+  margin-top: 17px;
+  margin-bottom: 17px;
 }
 
 .logo img {
   width: 203px;
+  margin-left: 47px;
+
 }
 
 .container {
   margin-top: 6px;
   margin-left: 4px;
+}
+
+/* Serve pra delimitar a altura das imagens que tiverem o alt descrito */
+img[alt="smiley"] {
+  max-height: 500px;
 }
 </style>

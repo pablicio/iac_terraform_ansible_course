@@ -1,1 +1,64 @@
-[{"name": "c4_generate.sh", "path": "/c4_generate.sh", "type": "file"}, {"name": "claim-service", "type": "directory", "items": [{"name": "about", "type": "directory", "items": [{"name": "test_1.png", "path": "/claim-service/about/test_1.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/about/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/claim-service/about/test_2.puml", "type": "file"}]}, {"name": "core", "type": "directory", "items": [{"name": "CMS1.png", "path": "/claim-service/core/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/claim-service/core/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/core/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/claim-service/core/test_2.puml", "type": "file"}]}, {"name": "flows", "type": "directory", "items": [{"name": "CMS1.png", "path": "/claim-service/flows/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/claim-service/flows/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/flows/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/claim-service/flows/test_2.puml", "type": "file"}]}, {"name": "justino", "type": "directory", "items": [{"name": "test_1.png", "path": "/claim-service/justino/test_1.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/justino/test_1.puml", "type": "file"}]}, {"name": "modules", "type": "directory", "items": [{"name": "CMS1.png", "path": "/claim-service/modules/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/claim-service/modules/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/modules/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/claim-service/modules/test_2.puml", "type": "file"}]}, {"name": "system-general", "type": "directory", "items": [{"name": "CMS1.png", "path": "/claim-service/system-general/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/claim-service/system-general/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/claim-service/system-general/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/claim-service/system-general/test_2.puml", "type": "file"}]}]}, {"name": "map_folder.json", "path": "/map_folder.json", "type": "file"}, {"name": "map_formatter.py", "path": "/map_formatter.py", "type": "file"}, {"name": "plantuml.jar", "path": "/plantuml.jar", "type": "file"}, {"name": "support-service", "type": "directory", "items": [{"name": "about", "type": "directory", "items": [{"name": "CMS1.png", "path": "/support-service/about/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/support-service/about/CMS2.png", "type": "file"}, {"name": "test", "type": "directory", "items": []}, {"name": "test_1.puml", "path": "/support-service/about/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/support-service/about/test_2.puml", "type": "file"}]}, {"name": "core", "type": "directory", "items": [{"name": "CMS1.png", "path": "/support-service/core/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/support-service/core/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/support-service/core/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/support-service/core/test_2.puml", "type": "file"}]}, {"name": "flows", "type": "directory", "items": [{"name": "CMS1.png", "path": "/support-service/flows/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/support-service/flows/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/support-service/flows/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/support-service/flows/test_2.puml", "type": "file"}]}, {"name": "modules", "type": "directory", "items": [{"name": "CMS1.png", "path": "/support-service/modules/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/support-service/modules/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/support-service/modules/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/support-service/modules/test_2.puml", "type": "file"}]}, {"name": "system-general", "type": "directory", "items": [{"name": "CMS1.png", "path": "/support-service/system-general/CMS1.png", "type": "file"}, {"name": "CMS2.png", "path": "/support-service/system-general/CMS2.png", "type": "file"}, {"name": "test_1.puml", "path": "/support-service/system-general/test_1.puml", "type": "file"}, {"name": "test_2.puml", "path": "/support-service/system-general/test_2.puml", "type": "file"}]}]}]
+[
+  {
+    "path": "/c4-model-doc",
+    "files": [
+      "sobre-o-c4-model.md"
+    ],
+    "items": [
+      {
+        "path": "/c4-model-doc/code",
+        "files": [
+          "CMS1.png",
+          "CMS2.png",
+          "code.md",
+          "test_1.puml",
+          "test_2.puml"
+        ],
+        "items": [],
+        "name": "Code",
+        "md_slug": "code.md"
+      },
+      {
+        "path": "/c4-model-doc/component",
+        "files": [
+          "CMS1.png",
+          "CMS2.png",
+          "content.md",
+          "test_1.puml",
+          "test_2.puml"
+        ],
+        "items": [],
+        "name": "Content",
+        "md_slug": "content.md"
+      },
+      {
+        "path": "/c4-model-doc/container",
+        "files": [
+          "CMS1.png",
+          "CMS2.png",
+          "container.md",
+          "test_1.puml",
+          "test_2.puml"
+        ],
+        "items": [],
+        "name": "Container",
+        "md_slug": "container.md"
+      },
+      {
+        "path": "/c4-model-doc/context",
+        "files": [
+          "CMS1.png",
+          "CMS2.png",
+          "context.md",
+          "test_1.puml",
+          "test_2.puml"
+        ],
+        "items": [],
+        "name": "Context",
+        "md_slug": "context.md"
+      }
+    ],
+    "name": "Sobre O C4 Model",
+    "md_slug": "sobre-o-c4-model.md"
+  }
+]

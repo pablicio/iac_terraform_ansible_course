@@ -8,9 +8,7 @@
 !include DEVICONS/aws.puml
 !include FA5/mobile_alt.puml
 
-
 title Diagrama de contêineres do Sistema de Gerenciamento de Conteúdo
-
 
 SHOW_PERSON_PORTRAIT()
 LAYOUT_LEFT_RIGHT()
