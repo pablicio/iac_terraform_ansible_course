@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Generates diagrams of files modified in the last hour
-for i in `find . -type f -name "*.puml" -mmin -60`; do
+for i in `find . -type f -name "*.puml" -mmin -1`; do
  `java -jar plantuml.jar $i`; 
 done
 

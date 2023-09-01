@@ -2,8 +2,7 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-4">
-
+        <div class="col-3 sidebar">
           <div class="logo">
             <img src="https://segurolight.com.br/LogoParceiras/logo-youse.png" alt="FCC Logo" />
           </div>
@@ -18,8 +17,8 @@
           </DxTreeView>
         </div>
 
-        <div class="col-8">
-          <div id="content"></div>
+        <div class="col-9 content">
+          <div id="md-content"></div>
         </div>
       </div>
     </div>
@@ -58,10 +57,11 @@ export default {
       this.getMarkdowFile(this.currentItem)
     },
     getMarkdowFile(currentItem) {
+      document.getElementById("md-content").innerHTML = ''
       fetch(`http://localhost:8080${currentItem.path}/${currentItem.md_slug}`)
         .then(response => response.text())
         .then((mdText) => {
-          document.getElementById("content").innerHTML = md.render(mdText);
+          document.getElementById("md-content").innerHTML = md.render(mdText);
         })
     }
   }
@@ -117,6 +117,17 @@ export default {
 .container {
   margin-top: 6px;
   margin-left: 4px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.content {
+  position: absolute;
+  right: 0px;
 }
 
 /* Serve pra delimitar a altura das imagens que tiverem o alt descrito */
