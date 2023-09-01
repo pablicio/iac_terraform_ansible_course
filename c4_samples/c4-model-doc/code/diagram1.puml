@@ -4,6 +4,8 @@
 LAYOUT_TOP_DOWN()
 LAYOUT_WITH_LEGEND()
 
+title Teste Aqui
+
 Person(customer, Customer, "A customer")
 System_Boundary(c1, "Customer Information") {
     Container(app, "Customer Application", "Javascript, Angular", "Allows customers to manage their profile")

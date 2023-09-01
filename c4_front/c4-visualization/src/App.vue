@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+
       <div class="row">
         <div class="col-3 sidebar">
           <div class="logo">
@@ -44,7 +45,7 @@ export default {
   mounted() {
 
 
-    fetch("http://localhost:8080/map_folder.json")
+    fetch("http://192.168.33.11:8080/map_folder.json")
       .then(response => response.json())
       .then(data => {
         this.items = data
@@ -58,7 +59,7 @@ export default {
     },
     getMarkdowFile(currentItem) {
       document.getElementById("md-content").innerHTML = ''
-      fetch(`http://localhost:8080${currentItem.path}/${currentItem.md_slug}`)
+      fetch(`http://192.168.33.11:8080${currentItem.path}/${currentItem.md_slug}`)
         .then(response => response.text())
         .then((mdText) => {
           document.getElementById("md-content").innerHTML = md.render(mdText);
@@ -93,12 +94,12 @@ export default {
   border: none;
 }
 
-#product-details>.name {
+#product-details > .name {
   text-align: center;
   font-size: 20px;
 }
 
-#product-details>.price {
+#product-details > .price {
   text-align: center;
   font-size: 24px;
 }
@@ -119,15 +120,35 @@ export default {
   margin-left: 4px;
 }
 
-.sidebar {
+.dx-treeview-with-search > .dx-scrollable {
   position: fixed;
-  top: 0px;
+  top: 140px;
   left: 0px;
+  max-height: 450px;
+  overflow-y: auto;
+  margin-left: 18px;
+  width: 300px;
+  margin-top: -55px;
+}
+
+.dx-treeview .dx-scrollable:focus,
+.dx-treeview :focus {
+  width: 290px;
+}
+
+.dx-treeview-search {
+  display: none;
 }
 
 .content {
   position: absolute;
   right: 0px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
 }
 
 /* Serve pra delimitar a altura das imagens que tiverem o alt descrito */
