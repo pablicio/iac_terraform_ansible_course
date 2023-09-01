@@ -36,7 +36,7 @@ def list_files(startpath):
         md_slug = ''
 
         for f in files:
-            # Regex to check valid image file extension.
+            # Regex to check valid files extension.
             if validFiles(f, "([^\\s]+(\\.(?i)(puml|png|md))$)"):
               files_lst.append(f)
 
