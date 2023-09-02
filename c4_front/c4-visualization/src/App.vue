@@ -15,7 +15,7 @@
           <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
             item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
             :select-by-click="true" @item-collapsed="selectCollapse" @item-expanded="selectExpanded"
-            no-data-text="Nenhum resultado">
+            no-data-text="Nenhum resultado" >
 
             <template #item-template="item">
               {{ item.data.name }}
@@ -43,7 +43,8 @@ export default {
       mdContent: '',
       treeViewRef: '',
       tree: '',
-      controlCollapse: false
+      controlCollapse: false,
+      focusId: ''
     }
   },
   mounted() {
@@ -58,6 +59,10 @@ export default {
   },
   methods: {
     selectitem(e) {
+      let el =  document.getElementsByClassName("dx-state-selected")[0]
+      if (el) {   
+        el.classList.remove('dx-state-selected')
+      }
       this.currentItem = e.itemData;
       this.getMarkdowFile(this.currentItem)
     },
@@ -156,6 +161,8 @@ export default {
   width: 300px;
   margin-top: -55px;
 }
+
+
 
 .dx-treeview-toggle-item-visibility.dx-treeview-toggle-item-visibility-opened {
   left: 86%;
