@@ -1,21 +1,26 @@
 <template>
   <div>
     <div class="container">
-
       <div class="row">
         <div class="col-3 sidebar">
           <div class="logo">
             <img src="https://segurolight.com.br/LogoParceiras/logo-youse.png" alt="FCC Logo" />
+            <div class="tools">
+              <button class="btn" @click="collapseAll" v-if="controlCollapse"><font-awesome-icon
+                  icon="folder-open" /></button>
+              <button class="btn" @click="collapseAll" v-else><font-awesome-icon icon="folder" /></button>
+            </div>
           </div>
 
-          <DxTreeView id="treeView" :data-source="items" display-expr="name" item-template="product-template"
-            :search-enabled="true" search-mode="contains" selectionMode="single" :select-by-click="false"
-            @item-click="selectProduct">
+          <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
+            item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
+            :select-by-click="true" @item-collapsed="selectCollapse" @item-expanded="selectExpanded"
+            no-data-text="Nenhum resultado">
 
-            <template #product-template="product">
-              {{ product.data.name }}
+            <template #item-template="item">
+              {{ item.data.name }}
             </template>
-          </DxTreeView>
+          </dx-tree-view>
         </div>
 
         <div class="col-9 content">
@@ -27,23 +32,22 @@
 </template>
 
 <script>
-import DxTreeView from 'devextreme-vue/tree-view';
 var MarkdownIt = require('markdown-it'),
   md = new MarkdownIt();
 
 export default {
-  components: {
-    DxTreeView
-  },
   data() {
     return {
       items: {},
       currentItem: this.items,
-      mdContent: ''
+      mdContent: '',
+      treeViewRef: '',
+      tree: '',
+      controlCollapse: false
     }
   },
   mounted() {
-
+    this.tree = this.$refs[this.treeViewRef];
 
     fetch("http://192.168.33.11:8080/map_folder.json")
       .then(response => response.json())
@@ -53,12 +57,34 @@ export default {
       });
   },
   methods: {
-    selectProduct(e) {
+    selectitem(e) {
       this.currentItem = e.itemData;
       this.getMarkdowFile(this.currentItem)
     },
+    selectExpanded(e) {
+      this.controlCollapse = true
+      this.selectitem(e)
+    },
+    selectCollapse(e) {
+      if(this.controlCollapse){
+        this.selectitem(e)
+      }
+    },
+    collapseAll() {
+      this.controlCollapse = false
+      this.collapseChildren(this.tree.instance.getNodes(), this.tree);
+    },
+    collapseChildren(nodes, tree) {
+      nodes.forEach(node => {
+        if (node.children.length) {
+          this.collapseChildren(node.children, tree);
+          tree.instance.collapseItem(node.key);
+        }
+      })
+    },
     getMarkdowFile(currentItem) {
       document.getElementById("md-content").innerHTML = ''
+
       fetch(`http://192.168.33.11:8080${currentItem.path}/${currentItem.md_slug}`)
         .then(response => response.text())
         .then((mdText) => {
@@ -71,7 +97,7 @@ export default {
 
 <style>
 #treeView,
-#product-details {
+#item-details {
   display: inline-block;
   width: 300px;
 }
@@ -83,23 +109,23 @@ export default {
   margin-left: 20px;
 }
 
-#product-details {
+#item-details {
   vertical-align: top;
   width: 400px;
   height: 420px;
   margin-left: 20px;
 }
 
-#product-details>img {
+#item-details>img {
   border: none;
 }
 
-#product-details > .name {
+#item-details>.name {
   text-align: center;
   font-size: 20px;
 }
 
-#product-details > .price {
+#item-details>.price {
   text-align: center;
   font-size: 24px;
 }
@@ -107,7 +133,7 @@ export default {
 .logo {
   height: 60px;
   margin-top: 17px;
-  margin-bottom: 17px;
+  margin-bottom: 26px;
 }
 
 .logo img {
@@ -120,9 +146,9 @@ export default {
   margin-left: 4px;
 }
 
-.dx-treeview-with-search > .dx-scrollable {
+.dx-treeview-with-search>.dx-scrollable {
   position: fixed;
-  top: 140px;
+  top: 220px;
   left: 0px;
   max-height: 450px;
   overflow-y: auto;
@@ -131,13 +157,17 @@ export default {
   margin-top: -55px;
 }
 
-.dx-treeview .dx-scrollable:focus,
-.dx-treeview :focus {
-  width: 290px;
+.dx-treeview-toggle-item-visibility.dx-treeview-toggle-item-visibility-opened {
+  left: 86%;
+}
+
+.dx-treeview-toggle-item-visibility {
+  left: 86%;
 }
 
 .dx-treeview-search {
-  display: none;
+  top: 15px;
+  /* display: none; */
 }
 
 .content {
