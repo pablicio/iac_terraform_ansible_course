@@ -14,7 +14,7 @@
 
           <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
             item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
-            :select-by-click="true" @item-collapsed="selectCollapse" @item-expanded="selectExpanded"
+            :select-by-click="true" @item-collapsed="selectCollapse" @item-expanded="selectExpanded" @item-click="selectExpanded"
             no-data-text="Nenhum resultado" >
 
             <template #item-template="item">
@@ -60,9 +60,7 @@ export default {
   methods: {
     selectitem(e) {
       let el =  document.getElementsByClassName("dx-state-selected")[0]
-      if (el) {   
-        el.classList.remove('dx-state-selected')
-      }
+      el ? el.classList.remove('dx-state-selected') : null
       this.currentItem = e.itemData;
       this.getMarkdowFile(this.currentItem)
     },
