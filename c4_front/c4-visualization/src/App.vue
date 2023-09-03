@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-3 sidebar">
           <div class="logo">
-            <img src="https://segurolight.com.br/LogoParceiras/logo-youse.png" alt="FCC Logo" />
+            <img src="@/assets/logo-youse.png"/>
             <div class="tools">
               <button class="btn" @click="collapseAll" v-if="controlCollapse"><font-awesome-icon
                   icon="folder-open" /></button>
@@ -14,7 +14,7 @@
 
           <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
             item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
-            :select-by-click="true" @item-collapsed="selectCollapse" @item-expanded="selectExpanded" @item-click="selectExpanded"
+            :select-by-click="true" @item-changed="selectitem"  @item-click="selectitem"
             no-data-text="Nenhum resultado" >
 
             <template #item-template="item">
@@ -44,7 +44,7 @@ export default {
       treeViewRef: '',
       tree: '',
       controlCollapse: false,
-      focusId: ''
+      change: false
     }
   },
   mounted() {
@@ -59,19 +59,11 @@ export default {
   },
   methods: {
     selectitem(e) {
+      this.controlCollapse = true
       let el =  document.getElementsByClassName("dx-state-selected")[0]
       el ? el.classList.remove('dx-state-selected') : null
       this.currentItem = e.itemData;
       this.getMarkdowFile(this.currentItem)
-    },
-    selectExpanded(e) {
-      this.controlCollapse = true
-      this.selectitem(e)
-    },
-    selectCollapse(e) {
-      if(this.controlCollapse){
-        this.selectitem(e)
-      }
     },
     collapseAll() {
       this.controlCollapse = false
@@ -123,11 +115,7 @@ export default {
   border: none;
 }
 
-#item-details>.name {
-  text-align: center;
-  font-size: 20px;
-}
-
+#item-details>.name,
 #item-details>.price {
   text-align: center;
   font-size: 24px;
@@ -160,12 +148,7 @@ export default {
   margin-top: -55px;
 }
 
-
-
-.dx-treeview-toggle-item-visibility.dx-treeview-toggle-item-visibility-opened {
-  left: 86%;
-}
-
+.dx-treeview-toggle-item-visibility.dx-treeview-toggle-item-visibility-opened,
 .dx-treeview-toggle-item-visibility {
   left: 86%;
 }
