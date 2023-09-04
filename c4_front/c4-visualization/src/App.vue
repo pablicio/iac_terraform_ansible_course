@@ -14,8 +14,7 @@
 
           <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
             item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
-            :select-by-click="true" @item-changed="selectitem"  @item-click="selectitem"
-            no-data-text="Nenhum resultado" >
+            :select-by-click="true" @item-changed="selectitem" @item-click="selectitem" no-data-text="Nenhum resultado">
 
             <template #item-template="item">
               {{ item.data.name }}
@@ -24,7 +23,8 @@
         </div>
 
         <div class="col-9 content">
-          <div id="md-content"></div>
+          <md-render :source="sourceMd"></md-render>
+          <!-- <div id="md-content"></div> -->
         </div>
       </div>
     </div>
@@ -32,8 +32,30 @@
 </template>
 
 <script>
-var MarkdownIt = require('markdown-it'),
-  md = new MarkdownIt();
+// hljs = require('highlight.js'),
+// md = require('markdown-it')({
+//   highlight: function (str, lang) {
+//     if (lang && hljs.getLanguage(lang)) {
+//       try {
+//         return hljs.highlight(str, { language: lang }).value;
+//       } catch (__) { }
+//     }
+
+//     return ''; // use external default escaping
+//   }
+// });
+
+// import hljs from 'highlight.js'
+// import 'highlight.js/styles/default.css'
+// import MarkdownIt from 'markdown-it'
+
+// const md = new MarkdownIt({
+//   highlight: function(code) {
+//     return hljs.highlightAuto(code).value;
+//   }
+// })
+
+// md.enable('table');
 
 export default {
   data() {
@@ -44,10 +66,13 @@ export default {
       treeViewRef: '',
       tree: '',
       controlCollapse: false,
-      change: false
+      change: false,
+      sourceMd: ''
     }
   },
   mounted() {
+    // highlight.highlightAll()
+
     this.tree = this.$refs[this.treeViewRef];
 
     fetch("http://192.168.33.11:8080/map_folder.json")
@@ -60,7 +85,7 @@ export default {
   methods: {
     selectitem(e) {
       this.controlCollapse = true
-      let el =  document.getElementsByClassName("dx-state-selected")[0]
+      let el = document.getElementsByClassName("dx-state-selected")[0]
       el ? el.classList.remove('dx-state-selected') : null
       this.currentItem = e.itemData;
       this.getMarkdowFile(this.currentItem)
@@ -78,12 +103,10 @@ export default {
       })
     },
     getMarkdowFile(currentItem) {
-      document.getElementById("md-content").innerHTML = ''
-
       fetch(`http://192.168.33.11:8080${currentItem.path}/${currentItem.md_slug}`)
         .then(response => response.text())
         .then((mdText) => {
-          document.getElementById("md-content").innerHTML = md.render(mdText);
+          this.sourceMd = mdText
         })
     }
   }
@@ -167,18 +190,5 @@ export default {
   position: fixed;
   top: 0px;
   left: 0px;
-}
-
-/* Serve pra delimitar a altura das imagens que tiverem o alt descrito */
-img[alt="small"] {
-  max-height: 260px;
-}
-
-img[alt="medium"] {
-  max-height: 460px;
-}
-
-img[alt="large"] {
-  max-height: 660px;
 }
 </style>
