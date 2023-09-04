@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/default.css'
 
 import MarkdownIt from "markdown-it";
 import MarkdownItAbbr from "markdown-it-abbr";
@@ -15,7 +15,8 @@ import MarkdownItSup from "markdown-it-sup";
 import MarkdownItTasklists from "markdown-it-task-lists";
 import MarkdownItTOC from "markdown-it-toc-done-right";
 
-const markdown = new MarkdownIt()
+const markdown = new MarkdownIt(
+)
   .use(MarkdownItAbbr)
   .use(MarkdownItAnchor)
   .use(MarkdownItFootnote)
@@ -24,8 +25,6 @@ const markdown = new MarkdownIt()
   .use(MarkdownItSup)
   .use(MarkdownItTasklists)
   .use(MarkdownItTOC)
-
-
 
 export default {
   props: ['source'],
@@ -51,13 +50,25 @@ img[alt="large"] {
   max-height: 660px;
 }
 
-/* spacing */
-table, td, th {
-  border: 1px solid;
+/* Serve pra ajustar o cass das tabelas */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background: #efefef;
+}
+
+tr:hover {
+  background: #d1d1d1;
 }
 </style>

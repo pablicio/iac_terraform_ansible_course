@@ -14,7 +14,7 @@
 
           <dx-tree-view id="treeView" :ref="treeViewRef" :data-source="items" display-expr="name" expand-event="click"
             item-template="item-template" :search-enabled="true" search-mode="contains" selectionMode="single"
-            :select-by-click="true" @item-changed="selectitem" @item-click="selectitem" no-data-text="Nenhum resultado">
+            :select-by-click="true" @item-expanded="selectitem" @item-click="selectitem" no-data-text="Nenhum resultado">
 
             <template #item-template="item">
               {{ item.data.name }}
@@ -24,7 +24,6 @@
 
         <div class="col-9 content">
           <md-render :source="sourceMd"></md-render>
-          <!-- <div id="md-content"></div> -->
         </div>
       </div>
     </div>
@@ -32,31 +31,6 @@
 </template>
 
 <script>
-// hljs = require('highlight.js'),
-// md = require('markdown-it')({
-//   highlight: function (str, lang) {
-//     if (lang && hljs.getLanguage(lang)) {
-//       try {
-//         return hljs.highlight(str, { language: lang }).value;
-//       } catch (__) { }
-//     }
-
-//     return ''; // use external default escaping
-//   }
-// });
-
-// import hljs from 'highlight.js'
-// import 'highlight.js/styles/default.css'
-// import MarkdownIt from 'markdown-it'
-
-// const md = new MarkdownIt({
-//   highlight: function(code) {
-//     return hljs.highlightAuto(code).value;
-//   }
-// })
-
-// md.enable('table');
-
 export default {
   data() {
     return {
@@ -71,8 +45,6 @@ export default {
     }
   },
   mounted() {
-    // highlight.highlightAll()
-
     this.tree = this.$refs[this.treeViewRef];
 
     fetch("http://192.168.33.11:8080/map_folder.json")
