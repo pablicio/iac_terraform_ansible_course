@@ -68,6 +68,36 @@
         ],
         "items": [
           {
+            "path": "/claim-service/code/api",
+            "files": [
+              "api.md"
+            ],
+            "items": [
+              {
+                "path": "/claim-service/code/api/activities",
+                "files": [
+                  "activities.md",
+                  "rest.json"
+                ],
+                "items": [],
+                "name": "Activities",
+                "md_slug": "activities.md"
+              },
+              {
+                "path": "/claim-service/code/api/claims",
+                "files": [
+                  "claims.md",
+                  "rest.json"
+                ],
+                "items": [],
+                "name": "Claims",
+                "md_slug": "claims.md"
+              }
+            ],
+            "name": "Api",
+            "md_slug": "api.md"
+          },
+          {
             "path": "/claim-service/code/open-claim",
             "files": [
               "diagram1.png",

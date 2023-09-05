@@ -1,3 +1,0 @@
-c4_samples/c4-model-doc/code/diagram1.puml
-c4_samples/c4-model-doc/component/diagram1.puml
-

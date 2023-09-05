@@ -37,7 +37,7 @@ def list_files(startpath):
 
         for f in files:
             # Regex to check valid files extension.
-            if validFiles(f, "([^\\s]+(\\.(?i)(puml|png|md))$)"):
+            if validFiles(f, "([^\\s]+(\\.(?i)(puml|png|md|json))$)"):
               files_lst.append(f)
 
             # Regex to get principal md from dir.

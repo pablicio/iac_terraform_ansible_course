@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-3 sidebar">
           <div class="logo">
-            <img src="@/assets/logo-youse.png"/>
+            <img src="@/assets/logo-youse.png" />
             <div class="tools">
               <button class="btn" @click="collapseAll" v-if="controlCollapse"><font-awesome-icon
                   icon="folder-open" /></button>
@@ -23,7 +23,10 @@
         </div>
 
         <div class="col-9 content">
-          <md-render :source="sourceMd"></md-render>
+          
+
+          <swagger-render></swagger-render>
+          <!-- <md-render :source="sourceMd"></md-render> -->
         </div>
       </div>
     </div>
