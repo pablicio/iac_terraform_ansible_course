@@ -5,15 +5,16 @@
 </template>
 
 <script>
+import '@/assets/swagger/swagger-ui.css'
+import '@/assets/swagger/themes/3.x/theme-material.css'
 import SwaggerUIBundle from '@/assets/swagger/swagger-ui-bundle.js'
 import SwaggerUIStandalonePreset from '@/assets/swagger/swagger-ui-standalone-preset.js'
-import '@/assets/swagger/swagger-ui.css'
 
 export default {
   props: ['collection'],
   mounted() {
     const ui = SwaggerUIBundle({
-      url: "https://petstore.swagger.io/v2/swagger.json",
+      url: "https://raw.githubusercontent.com/swagger-api/swagger-samples/master/java/inflector-dropwizard/src/main/swagger/swagger.yaml",
       dom_id: '#swagger-ui',
       presets: [
         SwaggerUIBundle.presets.apis,
